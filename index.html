@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pororoca Doceria</title>
+
+  <style>
+
+.cart {
+  /* Seus estilos existentes para o carrinho */
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+
+
+
+
+
+
+.logo {
+  /* Seus estilos existentes para a logo */
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+
+
+
+
+    /* Estilos gerais */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff3e0;
+      color: #4e342e;
+    }
+
+    header {
+      background-color: #d84315;
+      text-align: center;
+      padding: 40px 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    header img {
+      width: 150px;
+      height: auto;
+      border: 5px solid white;
+      border-radius: 50%;
+    }
+
+    header h1 {
+      color: white;
+      font-size: 2em;
+      margin-top: 15px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Produtos */
+    .products-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .product-card {
+      width: 300px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      padding: 15px;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card img:hover {
+      transform: scale(1.1);
+    }
+
+    .product-card h3 {
+      margin: 10px 0 5px;
+      font-size: 1.2em;
+    }
+
+    .product-card .description {
+      background-color: #fbe9e7;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 0.95em;
+      line-height: 1.6;
+      margin: 10px 0;
+      color: #5d4037;
+      text-align: justify;
+    }
+
+    .product-card button {
+      margin-top: 10px;
+      background-color: #d84315;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.2s ease;
+    }
+
+    .product-card button:hover {
+      background-color: #bf360c;
+    }
+
+    .product-card button:active {
+      animation: buttonClick 0.2s ease;
+    }
+
+    @keyframes buttonClick {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(0.9);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Carrinho Compacto */
+    .cart {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #d84315;
+      color: white;
+      border-radius: 50px;
+      padding: 10px 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cart:hover {
+      background-color: #bf360c;
+    }
+
+    .cart-panel {
+      display: none;
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background-color: white;
+      color: #4e342e;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      max-height: 300px;
+      overflow-y: auto;
+      width: 320px;
+      z-index: 1000;
+      padding: 15px;
+    }
+
+    .cart-panel.open {
+      display: block;
+    }
+
+    .cart-panel div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .cart-panel button {
+      background-color: #d84315;
+      color: white;
+      border: none;
+      padding: 5px;
+      border-radius: 5px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .cart-panel button:hover {
+      background-color: #bf360c;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+
+    .overlay.open {
+      display: block;
+    }
+
+    /* Rodapé */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #d84315;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img class="logo" src="IMG_1318.PNG" alt="Logo da Pororoca Doceria">
+    <h1>Pororoca Doceria - O Doce Sabor da Amazônia!</h1>
+  </header>
+
+  <!-- Produtos -->
+  <div class="products-container" id="products"></div>
+
+  <!-- Carrinho -->
+  <div class="cart" onclick="toggleCart()">
+    🛒 <span id="cart-count">0</span> | R$ <span id="cart-total">0.00</span>
+  </div>
+  <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+  <div class="cart-panel" id="cart-panel">
+    <h3>Seu Carrinho</h3>
+    <div id="cart-items"></div>
+    <button onclick="goToWhatsApp()">Finalizar Pedido</button>
+  </div>
+
+  <!-- Rodapé -->
+  <footer> 
+    <p>Pororoca Doceria - Doces feitos com amor diretamente da Amazônia para você! 🧁</p>
+    <p>Siga-nos no <a href="https://www.instagram.com/pororocadoce/profilecard/?igsh=MnJ4dWxneXR0ejI4" class="insta" target="_blank" style="color: #ffd740;">Instagram</a></p>
+  </footer>
+
+  <script>
+    const products = [ 
+      { id: 1, name: 'Amigado', price: 2.00, img: 'Amigado.JPG', desc: 'Dois sabores, uma explosão de prazer! 🍫✨ O brigadeiro amigadinho, feito com chocolate 50% cacau e leite Ninho, é a união perfeita entre o amargo e o doce. Sinta o contraste em cada mordida!' },
+      { id: 2, name: 'Beijinho', price: 1.50, img: 'Beijinho.JPG', desc: 'Doce como um xero! 💖 O brigadeiro beijinho é a mistura perfeita de coco e leite condensado, com um toque de carinho em cada pedaço. Uma explosão de sabor que vai derreter seu coração!' },
+      { id: 3, name: 'Ferrero', price: 2.00, img: 'Brigadeiro de ferro.JPG', desc: 'Intensamente delicioso! 🍫✨ O brigadeiro de Ferrero de 15g, feito com chocolate 50%, é a combinação perfeita de cremosidade e sabor. Um pedaço de luxo em cada mordida!' },
+      { id: 4, name: 'Caixinha Pai D\'égua 12 unidades', price: 10.00, img:'Caixinha01.JPG', desc: 'Caixinha da felicidade com sabores da sua escolha do nosso cardápio 🍫✨ 4 unidades' },
+      { id: 5, name: 'Caixinha Pai D\'égua 12 unidades', price: 28.00, img:'Caixinha00.JPG', desc: 'Caixinha da felicidade com sabores da sua escolha do nosso cardápio 🍫✨ 12 unidades' },
+
+      { id: 6, name: 'Centro com 2 sabores', price: 65.00, img: 'centro com 2.JPG', desc: 'Aqui, você escolhe o sabor da felicidade! 😋🍫 No nosso centro de brigadeiros de 15g, você pode se deliciar com até 2 sabores incríveis e vem 50 unidades' },
+      { id: 7, name: 'Centro com 4 sabores', price: 75.00, img: 'centro com 4.JPG', desc: 'Aqui, você escolhe o sabor da felicidade! 😋🍫 No nosso centro de brigadeiros de 15g, você pode se deliciar com até 4 sabores incríveis e vem 50 unidades' },
+      { id: 8, name: 'Centro com 4 sabores', price: 135.00, img: 'centro com 4.JPG', desc: 'Aqui, você escolhe o sabor da felicidade! 😋🍫 No nosso centro de brigadeiros de 15g, você pode se deliciar com até 4 sabores incríveis e vem 100 unidades' },
+
+      { id: 9, name: 'Garotinha', price: 2.00, img: 'Garotinha.JPG', desc: 'Brigadeiro de Nesquik de 15g, com sabor suave de morango e textura irresistível. Uma explosão de doce nostalgia! 🍓✨' },
+      { id: 10, name: 'Mocinha de Chocolate', price: 1.50, img: 'Mocinha de Chocolate.JPG', desc: 'Brigadeiro tradicional de 15g, feito com chocolate 50% cacau e coberto com granulados. Cremoso por dentro, crocante por fora e cheio de sabor! 🍫' },
+      { id: 11, name: 'Ninhudo', price: 1.50, img: 'Ninhudo.JPG', desc: 'Doçura que é puro encanto! ✨ O brigadeiro Ninhudo é a combinação irresistível de leite Ninho e muito amor, criando um sabor cremoso e delicioso em cada mordida.' }
+    ];
+
+    let cart = [];
+
+    function renderProducts() {
+      const productsContainer = document.getElementById('products');
+      productsContainer.innerHTML = products.map(product => `
+        <div class="product-card">
+          <img src="${product.img}" alt="${product.name}">
+          <h3>${product.name}</h3>
+          <p class="description">${product.desc}</p>
+          <p><strong>R$ ${product.price.toFixed(2)}</strong></p>
+          <button onclick="addToCart(${product.id})">Adicionar ao Carrinho</button>
+        </div>
+      `).join('');
+    }
+
+    function addToCart(productId) {
+      const product = products.find(p => p.id === productId);
+      if (product) {
+        cart.push(product);
+        updateCart();
+      }
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartCount = document.getElementById('cart-count');
+      const cartTotal = document.getElementById('cart-total');
+      const cartItems = document.getElementById('cart-items');
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+      cartCount.textContent = cart.length;
+      cartTotal.textContent = total.toFixed(2);
+
+      cartItems.innerHTML = cart.map((item, index) => `
+        <div>
+          ${item.name} - R$ ${item.price.toFixed(2)}
+          <button onclick="removeFromCart(${index})">Remover</button>
+        </div>
+      `).join('');
+    }
+
+    function toggleCart() {
+      const overlay = document
+
+.getElementById('overlay');
+      const cartPanel = document.getElementById('cart-panel');
+      
+      overlay.classList.toggle('open');
+      cartPanel.classList.toggle('open');
+    }
+
+    function goToWhatsApp() {
+      if (cart.length === 0) {
+        alert("Seu carrinho está vazio!");
+        return;
+      }
+
+      const message = cart
+        .map(item => `- ${item.name} (R$ ${item.price.toFixed(2)})`)
+        .join('\n');
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+      const whatsappMessage = `Olá! Gostaria de fazer um pedido:\n\n${message}\n\nTotal: R$ ${total.toFixed(2)}`;
+      const encodedMessage = encodeURIComponent(whatsappMessage);
+      const whatsappLink = `https://wa.me/5596984302912?text=${encodedMessage}`;
+
+      window.open(whatsappLink, '_blank');
+    }
+
+    renderProducts();
+  </script>
+</body>
+</html>
