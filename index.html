@@ -358,7 +358,7 @@
       const total = cart.reduce((sum, item) => sum + item.price, 0);
       const whatsappMessage = `Olá! Gostaria de fazer um pedido:\n\n${message}\n\nTotal: R$ ${total.toFixed(2)}`;
       const encodedMessage = encodeURIComponent(whatsappMessage);
-      const whatsappLink = `https://wa.me/5596991500167?text=${encodedMessage}`;
+      const whatsappLink = `https://wa.me/+55 96 991500167?text=${encodedMessage}`;
 
       window.open(whatsappLink, '_blank');
     }
