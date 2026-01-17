@@ -280,13 +280,15 @@
       { id: 4, name: 'Caixinha Pai D\'égua 4 unidades', price: 10.00, img:'Caixinha01.JPG', desc: 'Caixinha da felicidade com sabores da sua escolha do nosso cardápio 🍫✨ 4 unidades' },
       { id: 5, name: 'Caixinha Pai D\'égua 12 unidades', price: 24.00, img:'Caixinha00.JPG', desc: 'Caixinha da felicidade com sabores da sua escolha do nosso cardápio 🍫✨ 12 unidades' },
 
-      { id: 6, name: '50 unidades,2 sabores', price: 65.00, img: 'centro com 2.JPG', desc: 'Aqui, você escolhe o sabor da felicidade! 😋🍫 No nosso centro de brigadeiros de 15g, você pode se deliciar com até 2 sabores incríveis e vem 50 unidades' },
-      { id: 7, name: '50 unidades,4 sabores', price: 75.00, img: 'centro com 4.JPG', desc: 'Aqui, você escolhe o sabor da felicidade! 😋🍫 No nosso centro de brigadeiros de 15g, você pode se deliciar com até 4 sabores incríveis e vem 50 unidades' },
-      { id: 8, name: 'Centro com 4 sabores', price: 135.00, img: 'centro com 4.JPG', desc: 'Aqui, você escolhe o sabor da felicidade! 😋🍫 No nosso centro de brigadeiros de 15g, você pode se deliciar com até 4 sabores incríveis e vem 100 unidades' },
+      { id: 6, name: 'Centro', price: 50.00, img: 'centro .JPG', desc: 'Aqui, você escolhe o sabor da felicidade! 😋🍫 No nosso centro de brigadeiros de 15g, você pode se deliciar e vem 100 unidades' },
 
-      { id: 9, name: 'Garotinha', price: 1.50, img: 'Garotinha.JPG', desc: 'Brigadeiro de Nesquik de 15g, com sabor suave de morango e textura irresistível. Uma explosão de doce nostalgia! 🍓✨' },
-      { id: 10, name: 'Mocinha de Chocolate', price: 1.50, img: 'Mocinha de Chocolate.JPG', desc: 'Brigadeiro tradicional de 15g, feito com chocolate 50% cacau e coberto com granulados. Cremoso por dentro, crocante por fora e cheio de sabor! 🍫' },
-      { id: 11, name: 'Ninhudo', price: 1.50, img: 'Ninhudo.JPG', desc: 'Doçura que é puro encanto! ✨ O brigadeiro Ninhudo é a combinação irresistível de leite Ninho e muito amor, criando um sabor cremoso e delicioso em cada mordida.' }
+      { id: 7, name: 'Garotinha', price: 1.50, img: 'Garotinha.JPG', desc: 'Brigadeiro de Nesquik de 15g, com sabor suave de morango e textura irresistível. Uma explosão de doce nostalgia! 🍓✨' },
+      { id: 8, name: 'Mocinha de Chocolate', price: 1.50, img: 'Mocinha de Chocolate.JPG', desc: 'Brigadeiro tradicional de 15g, feito com chocolate 50% cacau e coberto com granulados. Cremoso por dentro, crocante por fora e cheio de sabor! 🍫' },
+      { id: 9, name: 'Ninhudo', price: 1.50, img: 'Ninhudo.JPG', desc: 'Doçura que é puro encanto! ✨ O brigadeiro Ninhudo é a combinação irresistível de leite Ninho e muito amor, criando um sabor cremoso e delicioso em cada mordida.' }
+    ];
+    { id: 10, name: 'Centro de Canudinho', price: 70.00, img: 'Ninhudo.JPG', desc: 'Doçura que é puro encanto! ✨ O brigadeiro Ninhudo é a combinação irresistível de leite Ninho e muito amor, criando um sabor cremoso e delicioso em cada mordida.' }
+    ];
+    { id: 11, name: 'Ninhudo', price: 1.50, img: 'Ninhudo.JPG', desc: 'Doçura que é puro encanto! ✨ O brigadeiro Ninhudo é a combinação irresistível de leite Ninho e muito amor, criando um sabor cremoso e delicioso em cada mordida.' }
     ];
 
     let cart = [];
@@ -356,7 +358,7 @@
       const total = cart.reduce((sum, item) => sum + item.price, 0);
       const whatsappMessage = `Olá! Gostaria de fazer um pedido:\n\n${message}\n\nTotal: R$ ${total.toFixed(2)}`;
       const encodedMessage = encodeURIComponent(whatsappMessage);
-      const whatsappLink = `https://wa.me/5596984302912?text=${encodedMessage}`;
+      const whatsappLink = `https://wa.me/5596991500167?text=${encodedMessage}`;
 
       window.open(whatsappLink, '_blank');
     }
